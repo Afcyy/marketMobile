@@ -6,6 +6,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -44,7 +45,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                     products.add(Product(productName, productDesc, productPrice, photoUrl))
                 }
                 val adapter = ProductAdapter(products)
-                recyclerView.layoutManager = LinearLayoutManager(activity)
+                recyclerView.layoutManager = GridLayoutManager(activity, 2)
                 recyclerView.adapter = adapter
 
             }
