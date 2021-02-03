@@ -34,15 +34,17 @@ class AddproductFragment : Fragment(R.layout.fragment_addproduct) {
         addButton = view.findViewById(R.id.addButton)
 
         val database = FirebaseDatabase.getInstance().reference
+        val user = FirebaseAuth.getInstance().currentUser
 
         addButton.setOnClickListener{
             var name = inputName.text.toString()
             var description = inputDescription.text.toString()
             var price = inputPrice.text.toString()
             var photoUrl = url.text.toString()
+            var postedBy = user!!.email.toString()
             var id = database.push().key
 
-            database.child("$id").setValue(Product(name,description, price, photoUrl))
+            database.child("$id").setValue(Product(name,description, price, photoUrl, postedBy))
             startActivity(Intent(activity, MainActivity::class.java))
         }
 

@@ -41,11 +41,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                     var productDesc = i.child("description").getValue().toString()
                     var productPrice = i.child("price").getValue().toString() + "₾"
                     var photoUrl = i.child("url").getValue().toString()
+                    var postedBy = i.child("postedBy").getValue().toString()
 
-                    products.add(Product(productName, productDesc, productPrice, photoUrl))
+                    products.add(Product(productName, productDesc, productPrice, photoUrl, postedBy))
                 }
                 val adapter = ProductAdapter(products)
-                recyclerView.layoutManager = GridLayoutManager(activity, 2)
+                recyclerView.layoutManager = LinearLayoutManager(activity)
                 recyclerView.adapter = adapter
 
             }

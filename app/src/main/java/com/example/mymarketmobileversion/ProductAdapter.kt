@@ -22,6 +22,7 @@ class ProductAdapter(private val products: List<Product>)
         val productDesc: TextView = itemView.findViewById(R.id.productDesc)
         val productPrice: TextView = itemView.findViewById(R.id.productPrice)
         val urlofPhoto: TextView = itemView.findViewById(R.id.urlofPhoto)
+        val postedBy: TextView = itemView.findViewById(R.id.userEmail)
         val image: ImageView = itemView.findViewById(R.id.productPhoto)
 
 
@@ -42,13 +43,13 @@ class ProductAdapter(private val products: List<Product>)
         holder.productDesc.text = p.description
         holder.productPrice.text = p.price
         holder.urlofPhoto.text = p.url
+        holder.postedBy.text = p.postedBy
 
         Glide.with(holder.image.getContext())
             .load("${p.url}")
             .placeholder(R.drawable.ic_launcher_background)
             .into(holder.image);
 
-        Log.d("HAMDUALA", "${p.url}")
 
     }
 

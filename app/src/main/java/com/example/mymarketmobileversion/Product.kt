@@ -7,10 +7,12 @@ class Product {
     var description = ""
     var price = ""
     var url = ""
-    constructor(name:String, description:String, price:String, url: String){
+    var postedBy = ""
+    constructor(name:String, description:String, price:String, url: String, postedBy: String){
         this.name = name
         this.description = description
         this.price = price
         this.url = url
+        this.postedBy = postedBy
     }
 }
