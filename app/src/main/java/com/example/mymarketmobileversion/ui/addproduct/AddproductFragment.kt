@@ -1,5 +1,6 @@
 package com.example.mymarketmobileversion.ui.addproduct
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -11,6 +12,7 @@ import com.example.mymarketmobileversion.MainActivity
 import com.example.mymarketmobileversion.Product
 import com.example.mymarketmobileversion.R
 import com.example.mymarketmobileversion.RegisterActivity
+import com.example.mymarketmobileversion.ui.home.HomeFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.fragment_addproduct.*
@@ -37,6 +39,25 @@ class AddproductFragment : Fragment(R.layout.fragment_addproduct) {
         val user = FirebaseAuth.getInstance().currentUser
 
         addButton.setOnClickListener{
+
+            val builder = AlertDialog.Builder(activity)
+
+            builder.setTitle("პროდუქტი წარმატებით დაემატა")
+            builder.setMessage("გსურთ ახალი პროდუქტის დამატება?")
+            builder.setPositiveButton("ახლის დამატება"){ dialog, i ->
+                inputName.setText("")
+                inputDescription.setText("")
+                inputPrice.setText("")
+                url.setText("")
+                dialog.dismiss()
+            }
+            builder.setNegativeButton("მთავარ გვერდზე გადასვლა"){ dialog, i ->
+                startActivity(Intent(activity, MainActivity::class.java))
+                dialog.dismiss()
+            }
+
+            builder.show().setCancelable(false)
+
             var name = inputName.text.toString()
             var description = inputDescription.text.toString()
             var price = inputPrice.text.toString()
@@ -45,7 +66,7 @@ class AddproductFragment : Fragment(R.layout.fragment_addproduct) {
             var id = database.push().key
 
             database.child("$id").setValue(Product(name,description, price, photoUrl, postedBy))
-            startActivity(Intent(activity, MainActivity::class.java))
+//            startActivity(Intent(activity, MainActivity::class.java))
         }
 
 
