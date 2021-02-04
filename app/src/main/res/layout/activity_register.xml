@@ -40,6 +40,17 @@
             android:hint="Confirm Password"
             android:inputType="textPassword" />
 
+        <CheckBox
+            android:id="@+id/agreed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="3sp"
+            android:buttonTint="@color/colorPrimary"
+            android:maxEms="16"
+            android:text="I agree to the Terms of Service and Privacy Policy"
+            android:textColor="#454545"
+            android:textSize="12sp" />
+
         <Button
             android:id="@+id/signupButton"
             android:layout_width="match_parent"

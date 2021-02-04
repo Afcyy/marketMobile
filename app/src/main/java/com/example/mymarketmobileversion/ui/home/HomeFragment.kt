@@ -1,7 +1,10 @@
 package com.example.mymarketmobileversion.ui.home
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -27,7 +30,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         super.onViewCreated(view, savedInstanceState)
 
         recyclerView = view.findViewById(R.id.recyclerView)
-
         val database = FirebaseDatabase.getInstance().reference
 
         var getData = object : ValueEventListener{
@@ -36,6 +38,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
             override fun onDataChange(snapshot: DataSnapshot) {
                 val products = ArrayList<Product>()
+
                 for(i in snapshot.children){
                     var productName = i.child("name").getValue().toString()
                     var productDesc = i.child("description").getValue().toString()
@@ -45,6 +48,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
                     products.add(Product(productName, productDesc, productPrice, photoUrl, postedBy))
                 }
+
                 val adapter = ProductAdapter(products)
                 recyclerView.layoutManager = LinearLayoutManager(activity)
                 recyclerView.adapter = adapter
@@ -54,4 +58,5 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         database.addValueEventListener(getData)
         database.addListenerForSingleValueEvent(getData)
     }
+
 }
