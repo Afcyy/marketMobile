@@ -4,13 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#DCDCDC"
     tools:context=".ui.addproduct.AddproductFragment">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -19,7 +22,7 @@
             android:id="@+id/inputName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
+            android:fontFamily="@font/grotask"
             android:hint="Name"
             android:inputType="textPersonName" />
 
@@ -28,35 +31,52 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:autoSizeTextType="uniform"
-            android:ems="10"
-            android:hint="Description"
             android:ellipsize="none"
-            android:singleLine="false"
-            android:inputType="textMultiLine" />
+            android:fontFamily="@font/grotask"
+            android:hint="Description"
+            android:inputType="textMultiLine"
+            android:singleLine="false" />
 
         <EditText
             android:id="@+id/inputPrice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
+            android:fontFamily="@font/grotask"
             android:hint="Price"
-            android:maxLength="10"
-            android:inputType="number" />
+            android:inputType="number"
+            android:maxLength="10" />
 
         <EditText
             android:id="@+id/url"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
+            android:fontFamily="@font/grotask"
             android:hint="Photo url"
             android:inputType="textPersonName" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="40dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <Button
             android:id="@+id/addButton"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#FE675D"
+            android:layout_height="match_parent"
+            android:background="@drawable/roundedbuttonbrown"
+            android:fontFamily="@font/recoleta"
             android:text="Add"
-            android:textColor="#f7f7ff" />
+            android:textAllCaps="false"
+            android:textColor="#f7f7ff"
+            android:textSize="18sp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
